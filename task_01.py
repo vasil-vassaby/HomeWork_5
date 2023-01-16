@@ -9,16 +9,20 @@
 
 import random
 
+print('----Игра с конфетами----')
+
 
 def get_candy():
-    """Создание и вывод случайного количества конфет"""
-    print('----Игра с конфетами----')
+    """Создание случайного количества конфет"""
     number = random.randint(30, 100)
-    print('Количество конфет в начале игры: ' + str(number))
+    return number
 
 
 def get_player(player_count):
-    """Определение игроков"""
+    """
+    Формирование списка имен игроков
+    Параметр: player_count - количество игроков
+    """
     players = []
     for i in range(player_count):
         player_name = input(f'Введите имя игрока {i + 1}: ')
@@ -26,27 +30,35 @@ def get_player(player_count):
     return players
 
 
-def find_winner(players):
-    """Определение и вывод победителя"""
+def find_winner(players, count_candies):
+    """
+    Определение и вывод победителя
+    Параметры: players - список имен игроков, count_candies - количество конфет
+    """
     is_winner = False
     winner_name = None
     while not is_winner:
         for player in players:
-            print(f'Ход игрока ' + player.title())
-            player_number = int(input('Введите количество конфет: '))
-            if player_number <= 28:
-                number = number - player_number
-                if number == 0:
-                    is_winner = True
-                    winner_name = player
+            active = False
+            while not active:
+                print(f'Ход игрока ' + player.title())
+                player_number = int(input('Введите количество конфет: '))
+                if player_number <= 28:
+                    active = True
+                    count_candies = count_candies - player_number
+                    if count_candies == 0:
+                        is_winner = True
+                        winner_name = player
+                        break
                     break
-                print('Остаток конфет: ' + str(number))
-            else:
-                print('Введите количество конфет не более чем 28!')
+                else:
+                    print('Конфет должно быть не более чем 28!')
+            print('Остаток конфет: ' + str(count_candies))
     else:
         print(f'Победитель {winner_name.title()}')
 
 
-get_candy()
+number_candies = get_candy()
+print('Количество конфет в начале игры: ' + str(number_candies))
 number_of_players = get_player(2)
-find_winner(number_of_players)
+find_winner(number_of_players, number_candies)
