@@ -55,10 +55,11 @@ def find_winner(players, count_candies):
                     print('Конфет должно быть не более чем 28!')
             print('Остаток конфет: ' + str(count_candies))
     else:
-        print(f'Победитель {winner_name.title()}')
+        return winner_name.title()
 
 
 number_candies = get_candy()
 print('Количество конфет в начале игры: ' + str(number_candies))
 number_of_players = get_player(2)
-find_winner(number_of_players, number_candies)
+winner = find_winner(number_of_players, number_candies)
+print(f'Победитель {winner}')
