@@ -9,6 +9,7 @@
 
 import random
 import winner as win
+import player_list as pl
 
 print('----Игра с конфетами----')
 
@@ -24,6 +25,6 @@ def get_candy():
 
 number_candies = get_candy()
 print('Количество конфет в начале игры: ' + str(number_candies))
-number_of_players = get_player(2)
+number_of_players = pl.get_player(2)
 winner = win.find_winner(number_of_players, number_candies)
 print(f'Победитель {winner}')
