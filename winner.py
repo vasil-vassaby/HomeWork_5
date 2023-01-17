@@ -17,8 +17,8 @@ def find_winner(players, count_candies):
                     if count_candies == 0:
                         is_winner = True
                         winner_name = player
-                        break
-                    break
+                        #break
+                    #break
                 else:
                     print('Конфет должно быть не более чем 28!')
             print('Остаток конфет: ' + str(count_candies))
