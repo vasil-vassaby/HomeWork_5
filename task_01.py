@@ -8,6 +8,7 @@
 # b) Подумайте как наделить бота 'интеллектом'
 
 import random
+import winner as win
 
 print('----Игра с конфетами----')
 
@@ -30,11 +31,8 @@ def get_player(player_count):
     return players
 
 
-
-
-
 number_candies = get_candy()
 print('Количество конфет в начале игры: ' + str(number_candies))
 number_of_players = get_player(2)
-winner = find_winner(number_of_players, number_candies)
+winner = win.find_winner(number_of_players, number_candies)
 print(f'Победитель {winner}')
