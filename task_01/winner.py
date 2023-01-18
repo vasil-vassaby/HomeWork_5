@@ -4,7 +4,6 @@ def find_winner(players, count_candies):
     Параметры: players - список имен игроков, count_candies - количество конфет
     """
     is_winner = False
-    winner_name = None
     while not is_winner:
         for player in players:
             active = True
@@ -15,7 +14,6 @@ def find_winner(players, count_candies):
                     active = False
                     count_candies -= player_number
                     if count_candies == 0:
-                        is_winner = True
                         winner_name = player
                         return winner_name.title()
                 else:
