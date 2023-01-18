@@ -4,23 +4,17 @@
 # Первый ход определяется жеребьёвкой.
 # За один ход можно забрать не более чем 28 конфет.
 # Все конфеты оппонента достаются сделавшему последний ход.
-# a) Добавьте игру против бота
+# а) Добавьте игру против бота
 # b) Подумайте как наделить бота 'интеллектом'
 
-import random
+from random import randint as ri
 import winner as win
 import player_list as pl
 
 print('----Игра с конфетами----')
 
 
-def get_candy():
-    """Создание случайного количества конфет"""
-    number = random.randint(30, 100)
-    return number
-
-
-
+def get_candy(): return ri(30, 100)
 
 
 number_candies = get_candy()
