@@ -1,34 +1,49 @@
 
 from random import randint as ri
 
+players = []
+total = None
+
 
 def description():
     """ Формирование заголовка для игры """
-    print('----Игра с конфетами----')
+    print('--------ИГРА С КОНФЕТАМИ--------')
 
 
 def get_candy():
     """ Формирование случайным образом общего количества конфет от 30 до 150 шт """
-    return ri(30, 150)
+    global total
+    total = ri(30, 150)
+    print('Количество конфет в начале игры: ', total)
 
 
-def get_player(player_count):
-    """
-    Формирование списка имен игроков
-    Параметр: player_count - количество игроков
-    """
-    players = []
-    for i in range(player_count):
+def get_player():
+    """ Формирование списка имен игроков """
+    global players
+    for i in range(2):
         player_name = input(f'Введите имя игрока {i + 1}: ')
         players.append(player_name)
     return players
 
 
-def print_candy(count: int):
-    """ Вывод в консоль информации по количеству конфет в начале игры """
-    print('Количество конфет в начале игры: ' + str(count))
-
-
-def print_win(win: str):
-    """ Вывод в консоль информации о победителе игры """
-    print(f'Победитель {win}')
+def find_winner():
+    """ Определение и вывод победителя """
+    global total
+    global players
+    is_winner = False
+    while not is_winner:
+        for player in players:
+            active = True
+            while active:
+                print('Ход игрока ', player.title())
+                player_number = int(input('Введите количество конфет: '))
+                if player_number <= 28:
+                    active = False
+                    total -= player_number
+                    if total == 0:
+                        is_winner = True
+                        winner_name = player
+                        print(f'Победитель {winner_name.title()}')
+                else:
+                    print('Конфет должно быть не более чем 28!')
+            print('Остаток конфет: ', total)
