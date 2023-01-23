@@ -1,3 +1,4 @@
+
 def find_winner(players, count_candies):
     """
     Определение и вывод победителя
